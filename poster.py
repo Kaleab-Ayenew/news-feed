@@ -5,16 +5,9 @@ import json
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
 
 with open(r"site_list.json", "r") as list_file:
     sites = json.loads(list_file.read())
-
-BOT_TOKEN = os.getenv("NEWS_BOT_TOKEN", None)
-
-if not BOT_TOKEN:
-    print("Please set the bot token as an enviroment variable.")
-    sys.exit(1)
 
 
 def get_articles(url, site_name):
@@ -59,6 +52,12 @@ def post_to_telegram(url, site_name, token, ch_uname):
 
 def main_task():
     global sites
+    load_dotenv()
+    BOT_TOKEN = os.getenv("NEWS_BOT_TOKEN", None)
+    if not BOT_TOKEN:
+        print("Please set the bot token as an enviroment variable.")
+        sys.exit(1)
+
     print("The main task has started execution")
     proc_list = []
     arg_list = []
