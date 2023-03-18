@@ -4,6 +4,7 @@ import sys
 import json
 import requests
 from dotenv import load_dotenv
+import time
 
 
 with open(r"site_list.json", "r") as list_file:
@@ -13,7 +14,7 @@ with open(r"site_list.json", "r") as list_file:
 def get_articles(url, site_name):
     paper = newspaper.build(url, memoize_articles=True)
     content = []
-    for article in paper.articles[:5]:
+    for article in paper.articles:
         article.download()
         article.parse()
         article.nlp()
@@ -48,6 +49,7 @@ def post_to_telegram(url, site_name, token, ch_uname):
         print(rsp.status_code)
         js_rsp = rsp.json()
         print(f"Posted: {js_rsp.get('title')}")
+        time.sleep(3)
 
 
 def main_task():
