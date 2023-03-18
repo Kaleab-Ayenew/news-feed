@@ -1,0 +1,4 @@
+app_env/
+activate.ps1
+.env
+__pycache__/
