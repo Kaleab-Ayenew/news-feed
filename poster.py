@@ -45,10 +45,8 @@ def post_to_telegram(url, site_name, token, ch_uname):
         #     print(f"[{rsp.status}] for link {url}")
         #     js_rsp = await rsp.json()
         print(a.get("link"))
-        rsp = requests.post(bot_url, json=params, verify=False)
+        rsp = requests.post(bot_url, json=params)
         print(rsp.status_code)
-        js_rsp = rsp.json()
-        print(f"Posted: {js_rsp.get('title')}")
         time.sleep(3)
 
 
