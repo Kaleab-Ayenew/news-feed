@@ -1,4 +1,4 @@
-from main import run
+from poster import main_task
 import time
 
 mins = 1
@@ -6,7 +6,7 @@ mins = 1
 
 def deamon():
     while True:
-        run()
+        main_task()
         time.sleep(60*mins)
 
 
